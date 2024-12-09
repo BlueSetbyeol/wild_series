@@ -42,7 +42,9 @@ const migrate = async () => {
     // Close the database connection
     database.end();
 
-    console.info(`${DB_NAME} updated from '${path.normalize(schema)}' 🆙`);
+    console.info(
+      `${process.env.DB_NAME} updated from '${path.normalize(schema)}' 🆙`,
+    );
   } catch (err) {
     const { message, stack } = err as Error;
     console.error("Error updating the database:", message, stack);
