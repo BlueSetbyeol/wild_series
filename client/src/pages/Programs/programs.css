@@ -1,0 +1,23 @@
+.movie_list {
+  position: absolute;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20%;
+}
+
+.movie_card {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.movie_card img {
+  height: 50vh;
+}
+
+.basic-infos {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
