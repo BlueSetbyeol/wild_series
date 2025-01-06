@@ -11,7 +11,10 @@ const router = express.Router();
 import programActions from "./modules/program/programActions";
 
 router.get("/api/programs", programActions.browse);
-router.get("/api/programs/:id", programActions.read);
+router.get("/api/program/:id", programActions.read);
+// router.put("/api/program/:id", programActions.read);
+router.post("/api/program/", programActions.read);
+// router.delete("/api/program/:id", programActions.read);
 
 // Define category-related routes
 

@@ -25,17 +25,21 @@ export default function ProgramDetails() {
     <>
       <section>
         {program !== undefined && (
-          <>
+          <div className="movie_details">
             <h1>{program.title}</h1>
-            <img src={program.poster} alt={program.title} />
+            <img
+              src={program.poster}
+              alt={program.title}
+              className="movie_img"
+            />
             <div className="basic-infos">
               <h4>Country : </h4>
               <p>{program.country}</p>
               <h4>Date of Release : </h4>
               <p>{program.year}</p>
             </div>
-            <p>Synopsis : {program.synopsis}</p>
-          </>
+            <p className="synopsis">Synopsis : {program.synopsis}</p>
+          </div>
         )}
       </section>
     </>

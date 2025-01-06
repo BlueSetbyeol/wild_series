@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./programs.css";
 
 interface programsProps {
@@ -24,8 +25,11 @@ export default function Programs() {
     <section className="movie_list">
       <h1>Our Programs :</h1>
       {programs.map((program) => (
-        <div className="movie_card" key={program.id}>
-          <img src={program.poster} alt={program.title} />
+        <Link
+          to={`/program/${program.id}`}
+          className="movie_card"
+          key={program.id}
+        >
           <h2>{program.title}</h2>
           <div className="basic-infos">
             <h4>Country : </h4>
@@ -33,9 +37,9 @@ export default function Programs() {
             <h4>Date of Release : </h4>
             <p>{program.year}</p>
           </div>
-          <p>Synopsis : {program.synopsis}</p>
-        </div>
+        </Link>
       ))}
+      <Link to={"/program/new"}>Ajouter</Link>
     </section>
   );
 }

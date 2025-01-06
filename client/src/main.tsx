@@ -7,6 +7,8 @@ import Categories from "./pages/Categories/Categories";
 import CategoryDetails from "./pages/Categories/CategoryDetails";
 import CategoriesEdit from "./pages/Categories/CategoryEdit";
 import CategoryNew from "./pages/Categories/CategoryNew";
+import ProgramDetails from "./pages/Programs/ProgramDetails";
+import ProgramNew from "./pages/Programs/ProgramNew";
 import Programs from "./pages/Programs/programs";
 
 const router = createBrowserRouter([
@@ -19,6 +21,8 @@ const router = createBrowserRouter([
       { path: "/category/:id/edit", element: <CategoriesEdit /> },
       { path: "/category/new", element: <CategoryNew /> },
       { path: "/programs", element: <Programs /> },
+      { path: "/program/:id", element: <ProgramDetails /> },
+      { path: "/program/new", element: <ProgramNew /> },
     ],
   },
 ]);
