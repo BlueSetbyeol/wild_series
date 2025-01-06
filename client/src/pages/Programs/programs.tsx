@@ -14,7 +14,7 @@ export default function Programs() {
   const [programs, setPrograms] = useState<programsProps[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3310/api/programs")
+    fetch(`${import.meta.env.VITE_API_URL}/api/programs`)
       .then((res) => res.json())
       .then((data) => setPrograms(data))
       .catch((err) => console.error(err));
