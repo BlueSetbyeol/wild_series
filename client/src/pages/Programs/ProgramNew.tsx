@@ -11,7 +11,7 @@ export default function ProgramNew() {
     poster: "adresse html de l'image",
     country: "pays",
     year: "1980",
-    category_id: "romance",
+    category_id: "1",
   };
 
   return (

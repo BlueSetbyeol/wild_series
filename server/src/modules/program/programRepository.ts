@@ -8,8 +8,8 @@ type Program = {
   synopsis: string;
   poster: string;
   country: string;
-  year: number;
-  category_id: number;
+  year: string;
+  category_id: string;
 };
 
 class ProgramRepository {
@@ -20,38 +20,33 @@ class ProgramRepository {
 
   async read(id: number) {
     const [rows] = await databaseClient.query<Rows>(
-      `
-      select 
-        category.*, 
-        JSON_ARRAYAGG(
-          JSON_OBJECT(
-            "id", program.id, "title", program.title
-          )
-        ) as programs 
-      from 
-        category 
-        left join program on program.category_id = category.id 
-      where 
-        category.id = ? 
-      group by 
-        category.id
-      `,
+      "select * from program where id = ?",
       [id],
     );
     return rows[0] as Program[];
   }
 
   async create(program: Omit<Program, "id">) {
+    const year = Number.parseInt(program.year);
+    const category_id = Number.parseInt(program.category_id);
     const [result] = await databaseClient.query<Result>(
-      "insert into program (title, synopsis, poster, country, year, category_id) values(?,?,?,?,?,?)",
+      "insert into program (title, synopsis, poster, country, year, category_id) values (?, ?, ?, ?, ?, ?)",
       [
         program.title,
         program.synopsis,
         program.poster,
         program.country,
-        program.year,
-        program.category_id,
+        year,
+        category_id,
       ],
+    );
+    return result.insertId;
+  }
+
+  async delete(id: number) {
+    const [result] = await databaseClient.query<Result>(
+      "delete from program where id= ?",
+      [id],
     );
     return result.insertId;
   }

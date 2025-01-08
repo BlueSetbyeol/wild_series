@@ -1,6 +1,7 @@
 import "./programs.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ProgramDeleteForm from "../../components/ProgramDeleteForm";
 
 interface programsProps {
   id: number;
@@ -39,6 +40,7 @@ export default function ProgramDetails() {
               <p>{program.year}</p>
             </div>
             <p className="synopsis">Synopsis : {program.synopsis}</p>
+            <ProgramDeleteForm id={program.id}>Supprimer</ProgramDeleteForm>
           </div>
         )}
       </section>

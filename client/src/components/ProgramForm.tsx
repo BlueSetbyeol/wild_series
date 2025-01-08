@@ -1,4 +1,4 @@
-import "../pages/Categories/Categories.css";
+import "../pages/Programs/programs.css";
 import type { ReactNode } from "react";
 
 type ProgramData = {

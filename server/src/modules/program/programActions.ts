@@ -40,14 +40,27 @@ const add: RequestHandler = async (req, res, next) => {
       synopsis: req.body.synopsis,
       poster: req.body.poster,
       country: req.body.country,
-      year: Number.parseInt(req.body.year),
-      category_id: Number.parseInt(req.body.category_id),
+      year: req.body.year,
+      category_id: req.body.category_id,
     };
 
     const insertId = await programRepository.create(newProgram);
+    res.status(201).json({ insertId });
   } catch (error) {
     next(error);
   }
 };
 
-export default { browse, read, add };
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    const programID = Number(req.params.id);
+
+    await programRepository.delete(programID);
+
+    res.status(204);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default { browse, read, add, destroy };

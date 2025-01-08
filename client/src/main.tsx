@@ -20,9 +20,14 @@ const router = createBrowserRouter([
       { path: "/category/:id", element: <CategoryDetails /> },
       { path: "/category/:id/edit", element: <CategoriesEdit /> },
       { path: "/category/new", element: <CategoryNew /> },
-      { path: "/programs", element: <Programs /> },
+      {
+        path: "/programs",
+        element: <Programs />,
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/api/programs`),
+      },
       { path: "/program/:id", element: <ProgramDetails /> },
       { path: "/program/new", element: <ProgramNew /> },
+      // { path: "/program/:id/edit", element: <ProgramEdit /> },
     ],
   },
 ]);
